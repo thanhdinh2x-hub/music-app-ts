@@ -86,5 +86,75 @@ Dự án được thiết kế để dễ dàng mở rộng với các tính nă
 * **Điểm mạnh** → Code sạch theo MVC, có tổ chức, dễ mở rộng.
 
 ---
+Tốt 👌. Mình sẽ thêm phần **How It Works** với sơ đồ luồng bằng ASCII diagram, để nhà tuyển dụng dễ hình dung cách ứng dụng của bạn hoạt động từ lúc người dùng gửi request đến lúc hiển thị giao diện. Bạn có thể thêm phần này vào README sau phần mô tả dự án.
 
-Bạn có muốn mình viết thêm phần **“How it works” bằng sơ đồ luồng (User → Router → Controller → Model → View)** để minh hoạ trực quan không?
+---
+
+## 🔄 How It Works
+
+Dưới đây là sơ đồ luồng xử lý trong ứng dụng:
+
+```plaintext
+ [👤 User] 
+     │ Gửi request (ví dụ: /songs/123, /topics, /favorites)
+     ▼
+ [🌐 Express Router] 
+     │ Xác định route và gọi Controller tương ứng
+     ▼
+ [🧩 Controller] 
+     │ Xử lý logic nghiệp vụ (topics, songs, singers, favorites)
+     │ Gọi Model để truy vấn / ghi dữ liệu
+     ▼
+ [🗄️ Model (Mongoose + MongoDB)] 
+     │ Tương tác với database (tìm, lưu, cập nhật, xóa)
+     ▼
+ [🧱 Controller] 
+     │ Nhận dữ liệu từ Model, xử lý & gửi sang View
+     ▼
+ [🎨 View (Pug Templates)] 
+     │ Render HTML động (danh sách chủ đề, bài hát, ca sĩ, yêu thích)
+     ▼
+ [👤 User] 
+     Hiển thị giao diện cuối cùng trên trình duyệt
+```
+
+---
+
+### 📌 Ví dụ luồng thao tác
+
+1. **Người dùng mở trang chủ**
+
+   * Request: `GET /`
+   * Router gọi `topics.controller.index`
+   * Controller truy vấn MongoDB để lấy danh sách chủ đề → render `views/client/pages/topics/index.pug`.
+
+2. **Người dùng mở một chủ đề nhạc**
+
+   * Request: `GET /songs/:slugTopic`
+   * Controller gọi `song.controller.list`
+   * Truy vấn tất cả bài hát thuộc chủ đề → render danh sách trong Pug.
+
+3. **Người dùng nhấn thích một bài hát**
+
+   * Request: `POST /songs/like/:id`
+   * Controller gọi `song.controller.like`
+   * Thêm bài hát vào collection `favorite_songs` trong MongoDB → trả về JSON hoặc redirect.
+
+4. **Người dùng mở trang yêu thích**
+
+   * Request: `GET /favorites`
+   * Controller lấy toàn bộ bài hát từ collection `favorite_songs`
+   * Render ra danh sách yêu thích trong giao diện Pug.
+
+---
+
+👉 Với phần sơ đồ và ví dụ này, nhà tuyển dụng sẽ thấy ngay:
+
+* Ứng dụng của bạn tuân thủ **luồng MVC chuẩn**.
+* Các chức năng được tổ chức rõ ràng, có khả năng mở rộng.
+* Bạn hiểu cách kết nối giữa **User – Router – Controller – Model – View**.
+
+---
+
+Bạn có muốn mình vẽ thêm **sơ đồ cấu trúc thư mục** dưới dạng cây minh họa (để đi kèm với sơ đồ luồng này) không?
+
