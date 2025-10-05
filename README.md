@@ -1,6 +1,5 @@
-Ok 👍. Mình sẽ viết lại phần mô tả dự án **chi tiết bằng tiếng Việt**, để nhà tuyển dụng đọc là hiểu rõ project của bạn làm gì và có những chức năng nào.
-
----
+https://music-app-ts-sage.vercel.app/admin/songs
+https://music-app-ts-sage.vercel.app/topics
 
 ## 📖 Mô tả dự án
 
