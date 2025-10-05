@@ -1,0 +1,62 @@
+doctype html 
+html 
+    head 
+        title #{pagetitle}
+      
+        //- nhúng file style.css tĩnh ở public
+        link(rel="stylesheet", href="/css/style.css")
+           //- nhung boostrap css
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css")
+        //- nhúng css thư viện lấy icon
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css")
+        //-nhúng css thư viện upload ảnh
+        link(rel="stylesheet", href="https://unpkg.com/file-upload-with-preview/dist/style.css")
+        //- nhúng link online của thư viện viewerJS
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.css")
+        //- nhúng link CDN của  Aplayer
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css")
+        
+    body 
+   
+        include ../partials/header.pug
+        
+        block main
+        
+        include ../partials/footer.pug
+
+       
+
+        //- nhung boostrap js
+        script(src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js")    
+        script(src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js") 
+        //- end boostrap js
+
+        //- nhúng thư viện file icon 
+        script(type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js") 
+        //- end nhúng thư viện file icon 
+
+        //-nhúng thư viện upload ảnh
+        script( src="https://unpkg.com/file-upload-with-preview/dist/file-upload-with-preview.iife.js") 
+        //- end nhúng thư viện upload ảnh
+        
+        //-nhúng  link online của thư viện viewerJS
+        script( src="https://cdnjs.cloudflare.com/ajax/libs/viewerjs/1.11.6/viewer.js") 
+        //- end nhúng link online của thư viện viewerJS
+
+        //-nhúng  link online của thư viện Aplayer
+        script( src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js") 
+        //- end nhúng link online của thư viện Aplayer
+        
+        
+
+        //- file socket
+        script(src="/socket.io/socket.io.js")   
+        //- file js
+        script(src="/js/socket.js")
+        //-  //- khi bên js nhung import thì script phải có type là module 
+        //- script(type="module" src="/js/chat.js")     
+       
+        //- nhúng file script.js tĩnh ở public
+        script(src="/js/script.js")
+        //- viết khối block để chưa các file script riêng lẻ
+        block script 
